@@ -1,0 +1,58 @@
+AuthAdmIpRule:
+  label*:
+    s: Regra de IP
+    p: Regras de IPs
+
+  IpRules:
+    label*:
+      s: Regra de IP
+      p: Regras de IPs
+    attributes:
+      Enabled: Habilitada
+      Ip: Endereço IP
+
+AuthAdmTimeRange:
+  label*:
+    s: Intervalo de Horário
+    p: Intervalos de Horário
+  Times:
+    label*:
+      s: Intervalo de Horário
+      p: Intervalos de Horário
+    attributes:
+      Enabled: Habilitada
+      From: De
+      To: Até
+
+AuthAdmDayRule:
+  label*:
+    s: Regra Diária
+    p: Regras Diária
+
+  DayRules:
+    label*:
+      s: Regra Diária
+      p: Regras Diária
+
+    attributes:
+      Enabled: Habilitada
+      Sun: Dom
+      Mon: Seg
+      Tue: Ter
+      Wed: Qua
+      Thu: Qui
+      Fri: Sex
+      Sat: Sab
+      Times: Regras de Horas
+      Times_add: Adicionar Regra de Hora
+
+AuthAdmProtector:
+  label*:
+    s: Protetor de Autenticação
+    p: Protetores de Autenticação
+
+  attributes:
+    IpRules: Regras de IP
+    IpRules_add: Adicionar Regra de IP
+    DayRules: Regras Diária
+    DayRules_add: Adicionar Regra Diária
