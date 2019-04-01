@@ -8,7 +8,7 @@ import (
 	"github.com/moisespsena-go/aorm"
 )
 
-type AuthAdmIpRule struct {
+type AuthAdmLoginIpRule struct {
 	aorm.AuditedModel
 
 	ProtectorID string `gorm:"size:24;index"`
@@ -20,19 +20,18 @@ type AuthAdmIpRule struct {
 type AuthAdmTimeRange struct {
 	aorm.KeyStringSerial
 
-	Enabled bool
-
+	Enabled  bool
 	From, To time.Time
 
 	RuleID string `gorm:"size:24;index"`
 }
 
-type AuthAdmDayRule struct {
+type AuthAdmLoginDayRule struct {
 	aorm.AuditedModel
 
-	Enabled bool
-
-	Sun, Mon, Tue, Wed, Thu, Fri, Sat bool
+	Enabled,
+	Sun, Mon, Tue, Wed,
+	Thu, Fri, Sat bool
 
 	ProtectorID string `gorm:"size:24;index"`
 
@@ -43,6 +42,34 @@ type AuthAdmProtector struct {
 	fragment.FormFragmentModel
 
 	AutoLogout bool
-	IpRules    []AuthAdmIpRule  `gorm:"foreignkey:ProtectorID"`
-	DayRules   []AuthAdmDayRule `gorm:"foreignkey:ProtectorID"`
+	IpRules    []AuthAdmLoginIpRule  `gorm:"foreignkey:ProtectorID"`
+	DayRules   []AuthAdmLoginDayRule `gorm:"foreignkey:ProtectorID"`
+}
+
+type AuthAdmTime struct {
+	aorm.KeyStringSerial
+
+	Hour, Minute, Second int
+
+	AutoUpdaterID string `gorm:"size:24;index"`
+}
+
+type AuthAdmMail struct {
+	aorm.AuditedModel
+
+	Address string
+
+	AutoUpdaterID string `gorm:"size:24;index"`
+}
+
+type AuthAdmPasswordsAutoUpdater struct {
+	fragment.FormFragmentModel
+
+	AutoLogout bool
+
+	Sun, Mon, Tue, Wed,
+	Thu, Fri, Sat bool
+
+	Times        []AuthAdmTime `gorm:"foreignkey:AutoUpdaterID"`
+	Notificators []AuthAdmMail `gorm:"foreignkey:AutoUpdaterID"`
 }

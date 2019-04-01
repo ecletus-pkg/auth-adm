@@ -1,7 +1,7 @@
 package authadm
 
 import (
-	"github.com/ecletus-pkg/admin"
+	admin_plugin "github.com/ecletus-pkg/admin"
 	"github.com/ecletus-pkg/user"
 	"github.com/ecletus/admin"
 	"github.com/ecletus/db"
@@ -32,9 +32,13 @@ func (p *Plugin) OnRegister(options *plug.Options) {
 			e.Resource.AddFragmentConfig(&AuthAdmProtector{}, &admin.FragmentConfig{
 				Is: true,
 				Config: &admin.Config{
-					Setup: func(res *admin.Resource) {
-						setupProtector(Admin, res)
-					},
+					Setup: setupProtector,
+				},
+			})
+			e.Resource.AddFragmentConfig(&AuthAdmPasswordsAutoUpdater{}, &admin.FragmentConfig{
+				Is: true,
+				Config: &admin.Config{
+					Setup: setupPasswordsUpdater,
 				},
 			})
 		})
@@ -42,7 +46,15 @@ func (p *Plugin) OnRegister(options *plug.Options) {
 
 	db.Events(p).DBOnMigrate(func(e *db.DBEvent) error {
 		return helpers.CheckReturnE(func() (key string, err error) {
-			return "Migrate", e.AutoMigrate(&AuthAdmDayRule{}, &AuthAdmIpRule{}, &AuthAdmProtector{}, &AuthAdmTimeRange{}).Error
+			return "Migrate", e.AutoMigrate(
+				&AuthAdmMail{},
+				&AuthAdmLoginDayRule{},
+				&AuthAdmLoginIpRule{},
+				&AuthAdmPasswordsAutoUpdater{},
+				&AuthAdmProtector{},
+				&AuthAdmTime{},
+				&AuthAdmTimeRange{},
+			).Error
 		})
 	})
 }

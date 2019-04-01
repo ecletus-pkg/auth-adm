@@ -1,4 +1,4 @@
-AuthAdmIpRule:
+AuthAdmLoginIpRule:
   label*:
     s: Regra de IP
     p: Regras de IPs
@@ -24,7 +24,36 @@ AuthAdmTimeRange:
       From: De
       To: Até
 
-AuthAdmDayRule:
+AuthAdmMail:
+  label*:
+    s: Notificador
+    p: Notificadores
+
+  Notificators:
+    label*:
+      s: Notificador
+      p: Notificadores
+
+    attributes:
+      Address: Endereço de E-mail
+
+AuthAdmTime:
+  label*:
+    s: Horário
+    p: Horários
+
+  Times:
+    label*:
+      s: Horário
+      p: Horários
+
+    attributes:
+      Time: Horário
+      Hour: Hora
+      Minute: Minuto
+      Second: Segundo
+
+AuthAdmLoginDayRule:
   label*:
     s: Regra Diária
     p: Regras Diária
@@ -56,3 +85,24 @@ AuthAdmProtector:
     IpRules_add: Adicionar Regra de IP
     DayRules: Regras Diária
     DayRules_add: Adicionar Regra Diária
+
+
+AuthAdmPasswordsAutoUpdater:
+  label*:
+    s: Atualizador de Senha
+    p: Atualizador de Senhas
+
+  attributes:
+    Sun: Dom
+    Mon: Seg
+    Tue: Ter
+    Wed: Qua
+    Thu: Qui
+    Fri: Sex
+    Sat: Sab
+
+    Times: Horários
+    Times_add: Adicionar Horário
+
+    Notificators: Notificadores
+    Notificators_add: Adicionar Notificador
