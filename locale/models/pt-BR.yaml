@@ -8,7 +8,7 @@ AuthAdmLoginIpRule:
       s: Regra de IP
       p: Regras de IPs
     attributes:
-      Enabled: Habilitada
+      Enabled: Ativo
       Ip: Endereço IP
 
 AuthAdmTimeRange:
@@ -20,7 +20,6 @@ AuthAdmTimeRange:
       s: Intervalo de Horário
       p: Intervalos de Horário
     attributes:
-      Enabled: Habilitada
       From: De
       To: Até
 
@@ -64,7 +63,7 @@ AuthAdmLoginDayRule:
       p: Regras Diária
 
     attributes:
-      Enabled: Habilitada
+      Enabled: Ativo
       Sun: Dom
       Mon: Seg
       Tue: Ter
@@ -85,7 +84,23 @@ AuthAdmProtector:
     IpRules_add: Adicionar Regra de IP
     DayRules: Regras Diária
     DayRules_add: Adicionar Regra Diária
+    Enabled: Ativo
 
+
+AuthAdmUserProtector:
+  AuthAdmProtector:
+    label*:
+      s: Protetor de Autenticação
+      p: Protetores de Autenticação
+    attributes:
+      Protector: Protetor
+
+  Users:
+    label*:
+      s: Usuário
+      p: Usuários
+    attributes:
+      User: Usuário
 
 AuthAdmPasswordsAutoUpdater:
   label*:
@@ -93,6 +108,10 @@ AuthAdmPasswordsAutoUpdater:
     p: Atualizador de Senhas
 
   attributes:
+    Name: Nome
+    Description: Descrição
+    Days: Dias
+
     Sun: Dom
     Mon: Seg
     Tue: Ter
@@ -101,8 +120,12 @@ AuthAdmPasswordsAutoUpdater:
     Fri: Sex
     Sat: Sab
 
-    Times: Horários
-    Times_add: Adicionar Horário
-
     Notificators: Notificadores
     Notificators_add: Adicionar Notificador
+
+
+AuthAdmUserPasswordsAutoUpdater:
+  Users:
+    label*:
+      p: Usuários
+      s: Usuário

@@ -1,0 +1,6 @@
+As senhas dos usuário(s) abaixo foram atualizada(s):
+{{range $npwd := .Result}}
+- {{$npwd.Email}} [{{$npwd.Name}}]:   {{$npwd.Password}}
+{{end}}
+
+OBS: Este é um email automático. Não responda o mesmo.

@@ -1,0 +1,4 @@
+passwords_updated: Senhas atualizadas
+err_deny: |
+  Sua tentativa de acesso não passou pelas regras de autenticação.
+  Se você não esperava essa mensagem, entre em contato com o Administrador.
